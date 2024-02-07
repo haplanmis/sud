@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Box & Button Randomly Change Position | Codehal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+	
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+*::selection {
+	
+    background: #7d2ae8;
+    color: #fff;
+}
+body {    
+	
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #7d2ae8;
+}
+.wrapper {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+i {
+    font-size: 7.5em;
+    color: #7d2ae8;
+    border: 5px solid transparent;
+    outline: 3px solid #7d2ae8;
+    border-radius: 50%;
+}
+h2 {
+    font-size: 3em;
+    color: #ff0000;
+    margin: 15px 0;
+}
+.btn-group {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+button {
+    position: absolute;
+    width: 150px;
+    height: inherit;
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 30px;
+    border: 2px solid #7d2ae8;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}
+button:nth-child(1) {
+    margin-left: -200px;
+    background: #7d2ae8;
+}
+button:nth-child(2) {
+    margin-right: -200px;
+    color: #7d2ae8;
+	
+}
+.custom-icon {
+    width: 150px; 
+    height: 150px; 
+    background-image: url('C:/Users/Hakan/Desktop/morana/sud.png'); 
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    margin-bottom: 20px; 
+}
+</style>
+</head>
+<body>
+    <div class="wrapper" style="background-image: url('C:/Users/Hakan/Desktop/morana/hellokitty.jpg');">
+        <div class="custom-icon"></div>
+        <h2 class="question">Do you love me ?</h2>
+        <div class="btn-group">
+            <button class="yes-btn">Yes</button>
+            <button class="no-btn">Borink</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+<script>
+	const wrapper = document.querySelector('.wrapper');
+	const question = document.querySelector('.question');
+	const yesBtn = document.querySelector('.yes-btn');
+	const noBtn = document.querySelector('.no-btn');
+	const wrapperRect = wrapper.getBoundingClientRect();
+	const noBtnRect = noBtn.getBoundingClientRect();
+	yesBtn.addEventListener('click', () => {
+    question.innerHTML = 'I Love You Too :)';
+	});
+	noBtn.addEventListener('mouseover', () => {
+    const i = Math.floor(Math.random() * (wrapperRect.width - noBtnRect.width)) + 1;
+    const j = Math.floor(Math.random() * (wrapperRect.height - noBtnRect.height)) + 1;
+    noBtn.style.left = i + 'px';
+    noBtn.style.top = j + 'px';
+	});
+</script>
+</body>
+</html>
